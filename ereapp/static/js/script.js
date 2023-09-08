@@ -7,33 +7,33 @@ function mobile_toggle() {
     }
   }
 
-let i=[0];
-let images=[]
-let time=3000;
+// let i=[0];
+// let images=[]
+// let time=3000;
 
-images[0]="./static/images/hero.jpg"
-images[1]="./static/images/hero1.jpg"
-images[2]="./static/images/hero2.jpg"
-images[3]="./static/images/hero3.jpg"
-images[4]="./static/images/hero4.jpg"
+// images[0]="./static/images/hero.jpg"
+// images[1]="./static/images/hero1.jpg"
+// images[2]="./static/images/hero2.jpg"
+// images[3]="./static/images/hero3.jpg"
+// images[4]="./static/images/hero4.jpg"
 
-function changeImg(){
-    if(i<images.length){
-        document.slide.src=images[i]
-        i++
-    }else{i=0}
-setTimeout("changeImg()", time);
-}
-window.onload=changeImg;
+// function changeImg(){
+//     if(i<images.length){
+//         document.slide.src=images[i]
+//         i++
+//     }else{i=0}
+// setTimeout("changeImg()", time);
+// }
+// window.onload=changeImg;
 
-function checker(event){
-    var pswd = document.getElementById("c_pwd").value
-    var confirmation = document.getElementById("pwd").value
-    if(pswd != confirmation){
-        alert("Both passwords must match!")
-        event.preventDefault()
-    }
-}
+// function checker(event){
+//     var pswd = document.getElementById("c_pwd").value
+//     var confirmation = document.getElementById("pwd").value
+//     if(pswd != confirmation){
+//         alert("Both passwords must match!")
+//         event.preventDefault()
+//     }
+// }
 
 
 function checker2(event){

@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block page_title %}<title>Contact - Erékéré</title>{% endblock%}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}"/>
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" type="text/css">
-
-    <style type="text/css">{% block style %}
-        .go{
-            position:relative;
-            left:-30%
-        }
+{% extends "user/layout.html" %}
+{% block title %}<title>Contact - Erékéré</title>{% endblock %}
+{% block moreStyle %}
+    <style type="text/css">
         .imagebox{
             background-image:url(static/images/trip.jpg),
             linear-gradient(65deg, #3066be 12%, #23f0c7 88%);
@@ -22,124 +11,24 @@
             font-size:small;
             font-weight:600
         }
-        .form{
-            font-size:medium;
-        }
-        .form-bt{
-            text-align:center
-        }
-        #form-width{
-            width: 52%;
-        }
-        {% endblock %}
 
-        @media screen and (min-width:300px){
-            .form_intro{
-               position: relative;
-               top:-17%;
-            }
-            #contact_form{
-                margin-top:-28%;
-            }
-        }
-
-        @media screen and (min-width:300px){
-            .body_content{
-               display:none;
-            }
-
-            .form_intro{
-               height:max-content;
-            }
-            #contact_form{
-                margin-top:-28%;
-            }
-            #body_box2{
-                display:none;
-            }
-        }
-  
-        </style>
-</head>
-<body>
-    <div class="container-fluid">
-            <!-- HEADER -->
-        <div class="row">
-            <div class="col-md-7 _nav1 me-5 mt-1">
-                <ul>
-                    <li><a href="{{ url_for('about') }}" target="_self">ABOUT US</a></li>&emsp;&nbsp;&emsp;
-                    <li><a href="www.instagram.com/erekereng/" target="_blank">INSTAGRAM</a></li>&emsp;&nbsp;&emsp;
-                    <li><a href="www.facebook.com/erekereng/" target="_blank">FACEBOOK</a></li>&emsp;&nbsp;&emsp;
-                    <li><a href="www.twitter.com/erekereng/" target="_blank">TWITTER</a></li>&emsp;&nbsp;&emsp;
-                    <li><a href="{{ url_for('account') }}" target="_self"  class="myacct">My ACCOUNT</a></li>&emsp;&nbsp;&emsp;
-                </ul>
-            </div>
-        </div></div>
-        <main>
-            <nav class="navbar bg-light" aria-label="Light offcanvas navbar">
-                <div class="container-fluid _nav2">
-                    <a href="/"><img src="static/images/logo/logo.png" alt="sitelogo" class="logo"></a><span>
-                    <button class="navbar-toggler bg-warning" id="menu_btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight">
-                      Menu</button></span>
-                    </button>
-                </span>
-                  
-                  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">
-                    <div class="offcanvas-header">
-                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-5">
-                        <li class="nav-item">
-                          <a class="nav-link active text-warning" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-warning" href="/trip">Trip Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-warning" href="{{ url_for("tours") }}">Upcoming Trips</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle text-danger" href="/contact" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Contact us
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item text-warning" href="/about">About</a></li>
-                            <li>
-                              <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item text-warning" href="/contact">Contact</a></li>
-                          </ul>
-                        </li>
-                        <li class="nav-item mt-5">
-                            <a class="nav-link btn btn-warning text-light" href="{{ url_for("userlogin") }}" type="submit" class="_mainbtn">Log in</a>
-                        </li>
-                        <li class="nav-item mt-3">
-                            <a class="nav-link btn btn-outline-warning" href="{{ url_for("usersignup") }}" type="submit" class="_tbtn">Sign up</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </nav>
-        </main>
-
-    <!-- BODY -->
-   {% block hero %}    
-    <div class="row hero_box">
-        <div class="col-md-7 textbox">
-            <a href="{{ url_for('home') }}">home &sol;</a>
-                <a href="/contact">contact-us</a>
-            <h1>Contact Us</h1>
-            <p>
-                We organise group tours, school excursions, corporate retreats, holiday packages
-                and also offer tour guide services within Africa, especially in Nigeria to educate
-                people about the beauty within.
-            </p>
-        </div>
-        <div class="col-md-5 imagebox"></div>{% endblock %}
+    </style>
+{% endblock %}
+{% block hero %}    
+<div class="row hero_box">
+    <div class="col-md-6 textbox">
+        <a href="{{ url_for('home') }}">home &sol;</a>
+            <a href="{{ url_for("contact") }}">contact-us</a>
+        <h1>Contact Us</h1>
+        <p>
+            We help you experience the interconnection of humanity that create a meaningful
+            relationship between different people. 
+        </p>
     </div>
-            <!-- BODY -->
+    <div class="col-md-6 imagebox"></div>
+</div>
+{% endblock %}
+{% block contentBody %}
     <section class="row body_content mx-auto mt-5">
         <p class="col-md-12 body_intro mx-auto mt-4">
             We stand behind your promise to provide reliable tourism services that offers
@@ -147,7 +36,6 @@
             that linger.
         </p>
     </section>
-{% block content %}
     <div class="row mx-auto body_box">    
         <div class="col-md-5 body_box1">
             <h2 class="mt-3">Our Customers</h2>
@@ -160,123 +48,63 @@
                 rest of Africa has a massive latent tourism potential that needs to be
                 exploited and we are putting ourselves in a position to drive this in the future.
 			</p>
-        </div>
-                    
-        <div class="col-md-6 offset-1" id="body_box2"></div>
+        </div>              
+        <div class="col-md-6 d-md-flex d-none offset-1" id="body_box2"></div>
     </div>
-           {% endblock %} 
-            
-    <section class="mt-5" width="80%">
-        <div></div>
-        {% block form_intro %}
-            <p class="form_intro">
-                Got questions? Submit a request for information and we will get back to you shortly.
-                {% endblock %}
-    </section>
+{% endblock %} 
+{% block extra %}        
+<section width="80%">
+    <div></div>
+        <p class="form_intro">
+            Got questions? Submit a request for information and we will get back to you shortly.
+</section>
+<section class="mx-auto px-auto my-5">
+    <div class="mx-auto border border-2 _edge" style="width:50%; padding:10px">
+    <form class="my-5" action="" method="post">
+        <input type="hidden" name="csrf_token" value="csrf_token()"/>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+            {{ message }}
+        {% endfor %}
+        {% endif %}
 
-    <section id="form-width" class="mx-auto px-auto mt-5" id="contact_form">
-        {% block form %}
-        <div id="contact_form">
-        <form class="form-control my-3" action="" method="post">
-            <input type="hidden" name="csrf_token" value="csrf_token()"/>
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                {{ message }}
-            {% endfor %}
-            {% endif %}
-
-            {% endwith %}
-            <legend>Fill this form and we will get back to you.</legend>
-            {% if error %}
-            <div class="error-msg text-center">{{ error }}</div>
-            {% endif %}
-            <input class="form-control my-3" type="text" placeholder="Name" name="c_name" required/>
+        {% endwith %}
+        <legend class="text-lilac text-center">Fill this form and we will get back to you.</legend>
+        <div class="form-group">
+            <input class="form-control mb-3" type="text" placeholder="Name" name="c_name" required/>
+        </div>
+        <div class="form-group">
             <input class="form-control my-3" type="email" placeholder="Email" name="email" required/>
+        </div>
+        <div class="form-group">
             <input class="form-control my-3" type="number" placeholder="Phone Number" name="phone" required/>
+        </div>
+        <div class="form-group">
             <select class="form-control my-3" name="gender" required>
                 <option value="/">- Select Gender-</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="nil">I'd rather not say</option>
             </select>
-            <label for="method" id="method" name="method" required>How would you like to be contacted?</label>
-            <input type="radio" name="method" value="phonecall">Phone Call<br>
-            <input type="radio" name="method" value="whatsapp">WhatsApp<br>
-            <input type="radio" name="method" value="email">Email<br>
-            <label for="message">Message</label><br>
-            <textarea type="textarea" name="message" rows="6px" cols="17px" class="my-4" required></textarea><br><br>
-            <div id="form-bt">
-                <button class="btn btn-warning" type="submit">Submit</button>
-            </div>
-        </form></div>
-        {% endblock %}
-    </section>
-
-
-
-
-                <!-- FOOTER -->
-                <section class="mt-5">
-                    <div class="row mt-5 pre_footer_main">
-                        <div class="my-3 mx-auto col-12">
-                            <form>
-                                <input type="hidden" name="csrf_token" value="csrf_token()"/>
-                                <h1 class="ms-5 ps-5">Join Our Mailing List</h1><span>&emsp; &emsp;
-                                    <input type="email" class="ps-5" name="email_address"
-                                    placeholder="Enter Your Email Address">
-                                    <button id="mailing" class="btn btn-warning mt-3 me-5 px-3">Go</button>
-                                </form></span>
-                        </div>
-                        <div class="f_col col-4">
-                            <h2>Navigation</h2>
-                            <ul class="px-5 mx-auto">
-                                <li><a href="/trip">Trip Gallery</a></li>
-                                <li><a href="/tours">Upcoming Tours</a></li>
-                                <li><a href="/media">Media Center</a></li>
-                            </ul>
-                        </div>
-                        <div class="f_col col-4">
-                            <h2>Quick Links</h2>
-                            <ul class="px-5 mx-auto">
-                                <li><a href="/about">About Us</a></li>
-                                <li><a href="/contact">Contact Us</a></li>
-                                <li><a href="/tours">Book A Tour</a></li>
-                            </ul>
-                        </div>
-                        <div class="f_col col-4">
-                            <h2>Erékéré Africa</h2>
-                            <p class="px-5 mx-auto">
-                                Ogundare Awise Street,<br>Sholuyi, Gbagada
-                                <br>+234 805 257 2599
-                            </p>
-                            <img src="static/images/icons/fb.png" width="5%" class="icons fb">
-                            <img src="static/images/icons/ig.png" width="5%" class="icons ig">
-                            <img src="static/images/icons/twi.png" width="5%" class="icons twi">
-                        </div>
-                        
-                    </div>
-                  </section>
-            
-            <footer class="footer mt-auto py-3 bg-light">
-              <div class="container">
-                <span class="text-muted">
-                  <a href="/privacy-policy">Privacy Policy</a> &emsp; <a href="/terms-conditions">Terms of Use</a>
-                  Erékéré Africa&copy; &emsp;&#45;&emsp;All Rights Reserved. 
-                  <a href="www.yemi.dev">Designed By Yemi</a>
-                </span>
-              </div>
-            </footer> 
-            
-            </div>
-            
-            
-           
-            
-            </div>
-            <script src="{{url_for('static', filename='js/jquery-3.6.1.min.js') }}"  type="text/javascript"></script>
-            <script type="text/javascript" language="javascript" src="{{url_for('static', filename='js/script.js') }}"></script>
-            <script src="{{url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
-            </body>
-            </html>
+        </div>
+        <div class="form-group">
+            <label for="method" class="form-control" id="method" name="method" required>How would you like to be contacted?</label>
+                <input type="radio" name="method" style="color:#ffffff" value="phonecall" class="ms-3">Phone Call<br>
+                <input type="radio" name="method" value="whatsapp" class="ms-3">WhatsApp<br>
+                <input type="radio" name="method" value="email"class="ms-3">Email<br>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="message" class="form-control">Message</label>
+            <textarea type="textarea" class="form-control my-2" name="message" required></textarea><br><br>
+        </div>
+       
+        <div class="text-center">
+            <button class="btn btn-warning _btn text-center" type="submit">Submit</button>
+        </div></div>
+    </form></div>
+</section>
+{% endblock %}

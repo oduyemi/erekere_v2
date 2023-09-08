@@ -66,6 +66,7 @@ def adminlogin():
                 return redirect(url_for('adminhome'))
             else:
                 flash('Invalid password')
+                return redirect(request.referrer)
         else:
             return redirect(url_for('adminlogin'))
 
@@ -175,8 +176,9 @@ def admintours():
         db.session.execute(text(query))
         db.session.commit()
         flash('Trip information successfully completed')
-        
-    return render_template('admin/tourpost.html', mdeets=mdeets)
+        return redirect(request.referrer)
+    else:  
+        return render_template('admin/tourpost.html', mdeets=mdeets)
 
 
 @starter.route("/delete/<int:id>", strict_slashes = False)

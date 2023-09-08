@@ -40,39 +40,25 @@ def home():
 
 @starter.route('/contact', methods = ["POST", "GET"], strict_slashes = False)
 def contact():
-    name = request.form.get("c_name")
-    phone = request.form.get("phone")
-    email = request.form.get("email")
-    gender=request.form.get("gender")
-    method=request.form.get("method")
-    message=request.form.get("message")
-    error = None
-    try:
-        if not name or not name.strip():
-            error = "Fields cannot be blank. Please provide a valid name"
-        if not email or not email.strip():
-            error = "fields cannot be blank. Please provide a valid email address"
-        if not phone or not phone.strip():
-            error = "Fields cannot be blank. Please provide a valid phone number"
-        if not gender or not gender.strip():
-            error = "Fields cannot be blank. Please choose your gender"
-        if not method or not method.strip():
-            error = "Fields cannot be blank. Please tell us how you would like to be contacted"
-        if not message or not message.strip():
-            error = "Fields cannot be blank. Please drop a message"
-
-        if request.method == "GET":
-            return render_template('user/contact.html', error=error, name=name, phone=phone, email=email, gender=gender, method=method, message=message)
+    if request.method == "POST":
+        c_name = request.form.get("c_name")
+        phone = request.form.get("phone")
+        email = request.form.get("email")
+        gender=request.form.get("gender")
+        method=request.form.get("method")
+        message=request.form.get("message")
+        if c_name !='' and phone != "" and email !='' and gender !='' and method != "" and message != "":
+            new_contact=Contact(contact_name = c_name, contact_phone = phone, contact_email = email, contact_gender = gender, contact_method = method, contact_content = message, contact_status_id=1)
+            db.session.add(new_contact)
+            db.session.commit()
+            flash(f"Thank you for reaching out to us, We will get in touch with you shortly. ", "success")
+            return redirect(url_for("contact"))
         else:
-            
-            if name !='' and phone != "" and email !='' and gender !='' and method != "" and message != "":
-                new_contact=Contact(contact_name = name, contact_phone = phone, contact_email = email, contact_gender = gender, contact_method = method, contact_content = message, contact_status_id=1)
-                db.session.add(new_contact)
-                db.session.commit()
-                flash(f"Thank you for reaching out to us, We will get in touch with you shortly. ", "success")
-                return redirect(url_for("contact"))
-    except:
-        ""
+            flash(f"Please fill all fields", "danger")
+            return redirect(request.referrer)
+    else:
+        return render_template('user/contact.html')
+
 
 @starter.route('/about', strict_slashes = False)
 def about():

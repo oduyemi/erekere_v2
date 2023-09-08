@@ -1,203 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%extends "user/layout.html" %}
+{% block title%}
     <title>Privacy Policy - Erékéré</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}"/>
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" type="text/css">
+{% endblock %}
+{% block moreStyle %}  
     <style type="text/css">
-        .go{
-            position:relative;
-            left:-30%
+      .imagebox{
+        background-image:url(static/images/privacy.jpg),
+        linear-gradient(65deg, #3066be 12%, #23f0c7 88%);
+        background-position: center;
         }
-        .imagebox{
-            background-image:url(static/images/privacy.JPG),
-            linear-gradient(65deg, #3066be 12%, #23f0c7 88%);
-            background-position: center;
-        }
-        
-        @media and (max-width: 768px){
-          
+
+      .terms p span{
+          font-size:medium;
+          font-weight:600
         }
        
-        </style>
-</head>
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-    <div class="container-fluid">
-            <!-- HEADER -->
-        <div class="row">
-            <div class="col-md-7 _nav1 me-5 mt-1">
-                <ul>
-                    <li><a href="about.html" target="_self">ABOUT US</a></li>&emsp;&nbsp;&emsp;
-                    <li><a href="www.instagram.com/erekereng" target="_blank">INSTAGRAM</a></li>&emsp;&nbsp;&emsp;
-                    <li><a href="www.facebook.com/erekereng" target="_blank">FACEBOOK</a></li>&emsp;&nbsp;&emsp;
-                    <li><a href="www.twitter.com/erekereng" target="_blank">TWITTER</a></li>&emsp;&nbsp;&emsp;
-                    <li><a href="myaccount.html" target="_self">My ACCOUNT</a></li>&emsp;&nbsp;&emsp;
-                </ul>
-            </div>
-        </div></div>
-        <main>
-          <nav class="navbar bg-light" aria-label="Light offcanvas navbar">
-              <div class="container-fluid _nav2">
-                  <a href="/"><img src="static/images/logo/logo.png" alt="sitelogo" class="logo"></a><span>
-                  <button class="navbar-toggler bg-warning" id="menu_btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight">
-                    Menu</button></span>
-                  </button>
-              </span>
-                
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">
-                  <div class="offcanvas-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                  </div>
-                  <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-5">
-                      <li class="nav-item">
-                        <a class="nav-link active text-warning" aria-current="page" href="/">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link text-warning" href="/trip">Trip Gallery</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link text-warning" href="{{ url_for("tours") }}">Upcoming Trips</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-danger" href="/contact" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Contact us
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item text-warning" href="/about">About</a></li>
-                          <li>
-                            <hr class="dropdown-divider">
-                          </li>
-                          <li><a class="dropdown-item text-warning" href="/contact">Contact</a></li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mt-5">
-                          <a class="nav-link btn btn-warning text-light" href="{{ url_for("userlogin") }}" type="submit" class="_mainbtn">Log in</a>
-                      </li>
-                      <li class="nav-item mt-3">
-                          <a class="nav-link btn btn-outline-warning" href="{{ url_for("usersignup") }}" type="submit" class="_tbtn">Sign up</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </nav>
-      </main>
-        
-       <!-- BODY -->
-        <div class="row hero_box">
-            <div class="col-md-7 textbox">
-                <a href="/">home &sol;</a>
-                    <a href="/">privacy-policy</a>
-                <h1>Privacy Policy</h1>
-                <p>
-                Erékéré is the number one tour guide that promotes African tourism and connects people.
-                </p>
-            </div>
-            <div class="col-md-5 imagebox"></div>
+    </style>
+{%endblock %}
+{% block hero %}
+<div class="row hero_box">
+    <div class="col-md-7 textbox">
+        <a href="{{ url_for('home')}}">home &sol;</a>
+            <a href="/privacy-policy">privacy-policy</a>
+        <h1>Privacy Policy</h1>
+        <p> Erékéré is the number one tour guide that promotes African tourism and connects people.</p>
+    </div>
+    <div class="col-md-5 imagebox"></div>
+</div>
+{% endblock %}
+{% block contentBody %}
+<section class="my-5">
+    <div class="row">
+        <div class="col-sm-12 mt-4">
+            <h1  class="ms-2 text-lilac">Privacy &amp;<span>
+                <h1 class="burgundy d-inline">Policy</h1></span>
+            </h1>
         </div>
-                <!-- BODY -->
-
-        <div class="row">
-            <div class="col-sm-12 mt-4">
-                <h1  class="ms-2 text-title1">Privacy </h1>
-                    <h1 class="text-title2">Policy</h1></span></h1>
-            </div>
-            <div class="col-sm-12 mt-4 mx-5 terms">
-                <p>
-                    Your privacy is important to us. It is Erékéré&apos;s policy to respect your privacy
-                    regarding any information we may collect from you across our website, https://erekere.com/,
-                    and other sites we own and operate.<br><br>
-                    We only ask for personal information when we truly need it to provide a service to you.
-                    We collect it by fair and lawful means, with your knowledge and consent. We also let you
-                    know why we&apos;re collecting it and how it will be used.<br><br>
-                    We only retain collected information for as long as necessary to provide you with your
-                    requested service. What data we store, we&apos;ll protect within commercially acceptable means
-                    to prevent loss and theft, as well as unauthorised access, disclosure, copying, use or modification.<br><br>
-                    We don&apos;t share any personally identifying information publicly or with third-parties,
-                    except when required to by law. <br><br>
-                    Our website may link to external sites that are not operated by us. Please be aware that we have
-                    no control over the content and practices of these sites, and cannot accept responsibility or liability
-                    for their respective privacy policies.<br><br>
-                    You are free to refuse our request for your personal information, with the understanding that we may be
-                    unable to provide you with some of your desired services.<br><br>
-                    Your continued use of our website will be regarded as acceptance of our practices around privacy and
-                    personal information. If you have any questions about how we handle user data and personal information,
-                    feel free to contact us.<br><br>
-                    This policy is effective as of 01 January 2023.
+        <div class="col-sm-12 mt-4 mx-5 terms">
+          <p>
+              Your privacy is important to us. It is Erékéré&apos;s policy to respect your privacy
+              regarding any information we may collect from you across our website, https://erekere.com/,
+              and other sites we own and operate.<br><br>
+              We only ask for personal information when we truly need it to provide a service to you.
+              We collect it by fair and lawful means, with your knowledge and consent. We also let you
+              know why we&apos;re collecting it and how it will be used.<br><br>
+              We only retain collected information for as long as necessary to provide you with your
+              requested service. What data we store, we&apos;ll protect within commercially acceptable means
+              to prevent loss and theft, as well as unauthorised access, disclosure, copying, use or modification.<br><br>
+              We don&apos;t share any personally identifying information publicly or with third-parties,
+              except when required to by law. <br><br>
+              Our website may link to external sites that are not operated by us. Please be aware that we have
+              no control over the content and practices of these sites, and cannot accept responsibility or liability
+              for their respective privacy policies.<br><br>
+              You are free to refuse our request for your personal information, with the understanding that we may be
+              unable to provide you with some of your desired services.<br><br>
+              Your continued use of our website will be regarded as acceptance of our practices around privacy and
+              personal information. If you have any questions about how we handle user data and personal information,
+              feel free to contact us.<br><br>
+              This policy is effective as of 01 January 2023.
 
 
-                </p>
-            </div>
-        </div>
+          </p>
+      </div>
+  </div>
+</section>   
+{% endblock %}
+{% block extra %}{% endblock %} 
 
 
 
 
 
-                <!-- FOOTER -->
-
-                <section class="mt-5">
-                  <div class="row mt-5 pre_footer_main">
-                      <div class="my-3 mx-auto col-12">
-                          <form>
-                              <input type="hidden" name="csrf_token" value="csrf_token()"/>
-                              <h1 class="ms-5 ps-5">Join Our Mailing List</h1><span>&emsp; &emsp;
-                                  <input type="email" class="ps-5" name="email_address"
-                                  placeholder="Enter Your Email Address">
-                                  <button id="mailing" class="btn btn-warning mt-3 me-5 px-3">Go</button>
-                              </form></span>
-                      </div>
-                      <div class="f_col col-4">
-                          <h2>Navigation</h2>
-                          <ul class="px-5 mx-auto">
-                              <li><a href="/trip">Trip Gallery</a></li>
-                              <li><a href="/tours">Upcoming Tours</a></li>
-                              <li><a href="/media">Media Center</a></li>
-                          </ul>
-                      </div>
-                      <div class="f_col col-4">
-                          <h2>Quick Links</h2>
-                          <ul class="px-5 mx-auto">
-                              <li><a href="/about">About Us</a></li>
-                              <li><a href="/contact">Contact Us</a></li>
-                              <li><a href="/tours">Book A Tour</a></li>
-                          </ul>
-                      </div>
-                      <div class="f_col col-4">
-                          <h2>Erékéré Africa</h2>
-                          <p class="px-5 mx-auto">
-                            Ogundare Awise Street,<br>Sholuyi, Gbagada
-                            <br>+234 805 257 2599
-                          </p>
-                          <img src="static/images/icons/fb.png" width="5%" class="icons fb">
-                          <img src="static/images/icons/ig.png" width="5%" class="icons ig">
-                          <img src="static/images/icons/twi.png" width="5%" class="icons twi">
-                      </div>
-                      
-                  </div>
-                </section>
-          
-          <footer class="footer mt-auto py-3 bg-light">
-            <div class="container">
-              <span class="text-muted">
-                <a href="/privacy-policy">Privacy Policy</a> &emsp; <a href="/terms-conditions">Terms of Use</a>
-                Erékéré Africa&copy; &emsp;&#45;&emsp;All Rights Reserved. 
-                <a href="www.yemi.dev">Designed By Yemi</a>
-              </span>
-            </div>
-          </footer> 
-          
-          </div>
-          
-       
-          
-          </div>
-          <script src="{{url_for('static', filename='js/jquery-3.6.1.min.js') }}"  type="text/javascript"></script>
-          <script type="text/javascript" language="javascript" src="{{url_for('static', filename='js/script.js') }}"></script>
-          <script src="{{url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
-          </body>
-          </html>
