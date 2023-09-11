@@ -15,7 +15,7 @@
 
 .regcard{
     width:350px;
-    height:580px;
+    height:640px;
     perspective:1500px;
 }
 
@@ -23,7 +23,7 @@
 @media (max-width: 767px){
     .card{
         width:300px !important;
-        height: 480px;
+        height: 500px;
     }
     .regbtn{
         position: relative;
@@ -58,7 +58,7 @@
     .mainlog{
         position: relative;
         top:26px !important;
-        left: 17px !important; 
+        left: 2px !important; 
     }
 }
 
@@ -135,10 +135,10 @@ p{
 input[type=text],
 input[type=password],
 input[type=email]{
-    width: 95 !important;
+    width: 95%;
     height:40px !important;
-    padding: 15px !important;
-    margin: 12px 24px !important;
+    padding: 15px; 
+    margin: 12px 24px ;
     box-sizing: border-box !important;
     color: #000 !important;
     background-color: #F5EE9E !important;

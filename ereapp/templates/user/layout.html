@@ -263,13 +263,11 @@
                 <!-- FOOTER -->
     <div class="container-fluid">
       <div class="row justify-content-center bg-dark-blue footer">
-        <div class="col-md-12">
-          <h2 class="footer-heading">
+        <div class="col-md-12 text-center">
             <a href="/">
               <img src="{{ url_for('static', filename='images/logo/logo.png') }}"
-              class="object-cover mt-3 ms-3" width="5%"alt="Site logo" />
+              class="object-cover mt-3 ms-3 footer-heading" width="17%"alt="Site logo" />&emsp; &emsp;
             </a>
-          </h2>
           <p class="menu mx-auto text-center">
             <a href="{{ url_for("tours") }}" class="text-secondary">Tours</a>&emsp;
             <a href="{{ url_for("trip") }}" class="text-secondary">Eré Diaries</a>&emsp;
@@ -283,10 +281,10 @@
               <input type="hidden" name="csrf_token" value="csrf_token()"/>
               <h5 style="color:#EA7317" class="text-center">Join Our Mailing List</h5>
               <p class="text-secondary text-center">Be the first to know about our updates &amp; promotions.</p>
-              <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                <label for="newsletter1" class="visually-hidden">Email address</label>
-                <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                <button class="btn btn-warning _btn" type="submit">Submit</button>
+              <div class="d-flex flex-column flex-sm-row w-100 gap-2 mx-auto">
+                <label for="mailingList" class="visually-hidden">Email address</label>
+                <input id="mailingList" type="email" name="mailingList" class="form-control mx-auto" placeholder="Email address">
+                <button class="btn btn-warning _btn mailbtn" type="submit">Submit</button>
               </div>
             </form>
           </div>
@@ -301,7 +299,7 @@
         <div class="col-md-12 text-center">
           <p class="copyright text-dark-blue text-center">
             Copyright &copy;Erékéré Africa | All rights reserved.
-            <a class="text-dark-blue" href="www.yemi.dev">Designed By <span class="text-success">Yemi</span></a>
+            <a class="text-dark-blue" href="https://www.yemi.dev/">Designed By <span class="text-success">Yemi</span></a>
           </p>
         </div>
       </div>

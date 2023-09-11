@@ -11,20 +11,31 @@
           color:#10349A;
           font-size:smaller
       }
-
-    #inner_form input[type=text],
-    input[type=password],
-    input[type=email]{
-    width: 95%;
-    height:40px;
-    padding: 10px;
-    margin: 4px 20px;
-    box-sizing: border-box;
-    color: #000;
-    background-color: #F5EE9E;
-    outline: none;
-    border-radius: 4px;  
+      
+    @media(max-width: 767px){
+        input[type=text],
+        input[type=password],
+        input[type=email]{
+            margin: 4px 20px !important;
+            width: 85% !important;
+            /*padding: 15px; */
+            /*margin: 12px 24px ;*/
+        }
     }
+
+    /*#inner_form input[type=text],*/
+    /*input[type=password],*/
+    /*input[type=email]{*/
+    /*width: 95%;*/
+    /*height:40px;*/
+    /*padding: 10px;*/
+    /*margin: 4px 20px;*/
+    /*box-sizing: border-box;*/
+    /*color: #000;*/
+    /*background-color: #F5EE9E;*/
+    /*outline: none;*/
+    /*border-radius: 4px;  */
+    /*}*/
 
     
   </style>
@@ -47,11 +58,11 @@
           <input type="checkbox" id="chk" aria-hidden="true" name="">
           <div class="content">
               <div class="front">
-                  <div class="innerform me-5" id="inner_form">
+                  <div class="innerform mx-auto" id="inner_form">
                       <h2 class="mt-3">Log in</h2>
                       <p></p>
-                      <input type="text" name="username" placeholder="Username" class="mt-5">
-                      <input type="password" name="password" placeholder="Password" class="mt-3">
+                      <input type="text" name="username" placeholder="Username" class="mt-5" style="position:relative; left:-7%">
+                      <input type="password" name="password" placeholder="Password" class="mt-3" style="position:relative; left:-7%">
                       <label for="chk" aria-hidden="true">Forgot Password?</label>
                       <button type="submit" class="btn btn-warning _btn mainlog" style="position:relative; left:90px; top:54px">Login</button><br><br><br>
                       <div class="formlink mt-1">
@@ -72,7 +83,7 @@
                       {% endif %}
   
                       {% endwith %}
-                  <div class="innerform">
+                  <div class="innerform mx-auto">
                       <h2 class="mb-5">Reset Password</h2><br><br>
                       <input type="email" name="email" placeholder="Username" class="mt-5">
                       <input type="email" name="quest" placeholder="Secret Answer" class="mt-2">                            

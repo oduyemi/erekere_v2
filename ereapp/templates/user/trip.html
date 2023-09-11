@@ -1,56 +1,13 @@
 {% extends "user/layout.html" %}
-{% block title %}<title>Trip Gallery - Erékéré</title>
+{% block title %}<title>Trip Gallery - Erékéré</title>{% endblock %}
+{% block moreStyle %}
 <style>
-  .bd-placeholder-img {
-    font-size: 1.125 rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-
-  @media (min-width: 768 px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5 rem;
+    .imagebox{
+        background-image:url(static/images/trip1.jpg),
+        linear-gradient(65deg, #3066be 12%, #23f0c7 88%);
+        background-position: center;
     }
-  }
-
-  .b-example-divider {
-    height: 3 rem;
-    background-color: rgba(0, 0, 0, .1);
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1 px 0;
-    box-shadow: inset 0 .5 em 1.5 em rgba(0, 0, 0, .1), inset 0 .125 em .5 em rgba(0, 0, 0, .15);
-  }
-
-  .b-example-vr {
-    flex-shrink: 0;
-    width: 1.5 rem;
-    height: 100 vh;
-  }
-
-  .bi {
-    vertical-align: -.125 em;
-    fill: currentColor;
-  }
-
-  .nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-  }
-
-  .nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1 rem;
-    margin-top: -1mpx;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
+  
 </style>
 {% endblock %}
 {% block hero %}
@@ -92,7 +49,7 @@
           Centenary Hall (1930), and several churches and mosques.
         </p>
       </div>
-      <div class="bg-teal-blue shadow-sm mx-auto" style="width: 80%; background-image:url(static/images/abk.jpg); background-size: cover; background-position:center; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-teal-blue shadow-sm mx-auto" style="width: 80%; background-image:url(static/images/abk2.jpg); background-size: cover; background-position:center; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
     <div class="bg-lilac me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
       <div class="my-3 p-3">
@@ -103,7 +60,7 @@
           often naturalistic and life size.
         </p>
       </div>
-      <div class="bg-lilac shadow-sm mx-auto" style="background-image:url(static/images/bene.jpg); background-size: cover; background-position:20%; width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-lilac shadow-sm mx-auto" style="background-image:url(static/images/bene1.jpg); background-size: cover; background-position:20%; width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
   </div>
   
@@ -119,7 +76,7 @@
           The Palm, a resort with water and marine-animal parks.
         </p>
       </div>
-      <div class="bg-lilac shadow-sm mx-auto" style="background-image:url(static/images/dubai.jpg); background-size: cover; background-position:20%; width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-lilac shadow-sm mx-auto" style="background-image:url(static/images/dubai2.jpg); background-size: cover; background-position:20%; width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
     <div class="bg-teal-blue me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
       <div class="my-3 py-3">
@@ -159,7 +116,7 @@
           in the region of Guinea. Ghana was known for its large gold usage and hence was named the Land of Gold.
         </p>
       </div>
-      <div class="bg-teal-blue shadow-sm mx-auto" style="background-image:url(static/images/dubai.jpg); background-size: cover; background-position:20%; width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-teal-blue shadow-sm mx-auto" style="background-image:url(static/images/gh2.jpg); background-size: cover; background-position:20%; width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
   </div>
   
@@ -172,7 +129,7 @@
           population is known for its beach resorts, nightlife and activity.
         </p>
       </div>
-      <div class="bg-lilac shadow-sm mx-auto" style="background-image:url(static/images/lagos.jpg); background-size: cover; background-position:20%; width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-lilac shadow-sm mx-auto" style="background-image:url(static/images/lag1.jpg); background-size: cover; background-position:20%; width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
     <div class="bg-teal-blue me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
       <div class="my-3 py-3">
@@ -183,9 +140,9 @@
           annual mountain running competition called the Obudu Ranch International Mountain Race.
         </p>
       </div>
-      <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="bg-teal-blue me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
         <div class="my-3 py-3">
-      <div class="bg-body shadow-sm mx-auto" style="background-image:url(static/images/obudu.jpg); background-size: cover; background-position:20%; width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-body shadow-sm mx-auto" style="background-image:url(static/images/obudu1.jpg); background-size: cover; background-position:20%; width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
   </div>
 </section>

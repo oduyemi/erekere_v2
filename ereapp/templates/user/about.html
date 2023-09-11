@@ -1,5 +1,21 @@
 {% extends "user/layout.html" %}
 {% block title %}<title>About Erekere</title>{% endblock %}
+{% block moreStyle %}
+    <style>
+        .imagebox{
+            background-image:url(static/images/aboutus.jpg),
+            linear-gradient(65deg, #3066be 12%, #23f0c7 88%);
+            background-position-y: 34%;
+        }
+         @media (max-width: 767px){
+            #body_box2{
+                position: relative !important;
+                left:0 !important;
+            }
+        }
+    </style>
+   
+{% endblock %}
  {% block hero %}
     <div class="row hero_box mx-auto overflow-hidden">
         <div class="col-md-6 textbox">
@@ -11,22 +27,23 @@
                 about the various benefits of traveling/ through experience rather than reading from a book.
             </p>
         </div>
-        <div class="col-md-6 imagebox">
-        </div>
+        <div class="col-md-6 imagebox"></div>
     </div>
  {% endblock %}
  {% block contentBody %}
- <section class="my-5">
-    <div class="row">
-        <div class="col-md-10 my-5 mx-auto">
+ <section class="mb-5">
+    <div class="row mb-3">
+        <div class="col-md-10 my-3 mx-auto">
           <h1 class="animate__animated animate__bounce text-center text-dark-blue">The Eré Diaries</h1>
         </div>
     </div>
-    <div class="row mx-auto body_box">
-        <div class="col-md-6 my-5 d-md-flex d-none" id="body_box2"></div>    
-        <div class="col-md-5 body_box1">
-            <h2 class="mt-5 fw-bold">What&apos;s Erekere About&quest;</h2>
-            <p class="">
+</section>
+<section class="my-5 mx-auto">
+    <div class="row d-md-flex align-items-center justify-content-center body_box">
+        <div class="col-md-4 mx-auto" id="body_box2"></div>  
+        <div class="col-md-7 body_box1 mb-5 mx-auto">
+            <h2 class="mb-3 mt-5 fw-bold mx-auto w-75">What&apos;s Erekere About&quest;</h2>
+            <p class="w-75 mx-auto">
                 Erekere is a Nigerian tour operating company that promotes African tourism and connects people.
                 We organise group tours, school excursions, corporate retreats, holiday packages and also offer
                 tour guide services within Africa, to educate people about the beauty within.
@@ -38,8 +55,8 @@
 </section>
 {% endblock %}
 {% block extra %}
-<section class="my-5">
-    <div class="row justify-content-center align-items-center bg-lilac">
+<section class="my-5 ">
+    <div class="row d-flex justify-content-center align-items-center bg-lilac">
         <div class="col-md-5 my-5">
             <div style="margin:10px">
                 <h2 class="ps-4 text-dark-blue mx-auto fw-bold">Our Mission</h2>
