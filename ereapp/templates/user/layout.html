@@ -21,11 +21,9 @@
         <header class="headnav">
             <div class="row">
             <div class=" me-5 mt-1 top_menu bg-transparent">
-                <a href="{{ url_for('about')}}" class="float-end">ABOUT US</a>
                 <a href="https://www.instagram.com/erekereng/" target="_blank">INSTAGRAM</a>&nbsp;
                 <a href="https://www.facebook.com/erekereng/" target="_blank">FACEBOOK</a>&nbsp;
                 <a href="https://www.twitter.com/erekereng/" target="_blank">TWITTER</a>&nbsp;
-                <a href="{{ url_for('account')}}" target="_self" class="myacct">MY ACCOUNT</a>
                 </ul>
             </div>
             </div>
@@ -38,15 +36,16 @@
                     </a>
                 </div>
                 <div class="nav-menu-wrapper toggleColor d-none d-md-flex align-items-center justify-content-between space-x-8">
-                    <a class="nav-link text-warning active" href="{{ url_for('home')}}" target="_self">Home</a>
-                    <a class="nav-link text-black" href="{{ url_for("trip") }}">Trip Gallery</a>
-                    <a class="nav-link text-black" href="{{ url_for("tours") }}">Upcoming Tours</a>
+                    <a class="nav-link text-warning active" href="{{ url_for('home')}}" target="_self">Home</a>&nbsp;
+                    <a class="nav-link text-black" href="{{ url_for('about')}}">About</a>&nbsp;
+                    <a class="nav-link text-black" href="{{ url_for("trip") }}">Trip Gallery</a>&nbsp;
+                    <a class="nav-link text-black" href="{{ url_for("tours") }}">Upcoming Tours</a>&nbsp;
                     <a class="nav-link text-black" href="{{ url_for("contact") }}">Contact</a>
                 </div>
-                <div class="d-none d-md-flex align-items-center justify-content-between space-x-6 pr-2">
-                    <a href="{{ url_for("userlogin")}}"><button class="btn btn-outline-warning _btn_outline py-2 px-3">Login</button></a>&emsp;
-                    <a href="{{ url_for("usersignup")}}"><button class="btn btn-warning _btn py-2 px-3">Register</button></a>
-                </div>
+                <!--<div class="d-none d-md-flex align-items-center justify-content-between space-x-6 pr-2">-->
+                <!--    <a href=""><button class="btn btn-outline-warning _btn_outline py-2 px-3">Login</button></a>&emsp;-->
+                <!--    <a href=""><button class="btn btn-warning _btn py-2 px-3">Register</button></a>-->
+                <!--</div>-->
             </div>
             <!-- Hamburger Menu -->
             <div class="mobilenav d-md-none d-block">
@@ -56,15 +55,15 @@
                 </a>
                 <div id="navlinks">
                 <a class="nav-link active text-warning" href="{{ url_for('home')}}" target="_self" aria-current="page">Home</a>
-                <a href="{{ url_for('about')}}">ABOUT US</a>
-                <a class="nav-link text-black" href="{{ url_for("contact") }}">Contact</a>
-                <a href="{{ url_for('account')}}" target="_self" class="myacct">MY ACCOUNT</a>
+                <a class="nav-link dark" href="{{ url_for('about')}}">About</a>
+                <a class="nav-link dark" href="{{ url_for("contact") }}">Contact</a>
+                <!--<a href="" target="_self" class="myacct">My Account</a>-->
                 <a class="nav-link dark" href="{{ url_for("trip") }}">Trip Gallery</a>
                 <a class="nav-link dark" href="{{ url_for("tours") }}">Upcoming Tours</a>
-                <div class="" style="width:50%">
-                    <a href="{{ url_for("userlogin")}}"><button class="btn btn-outline-warning _btn_outline py-2 px-5">Login</button></a>
-                    <a href="{{ url_for("usersignup")}}"><button class="btn btn-warning _btn py-2 px-5">Register</button></a>
-                </div>
+                <!--<div class="" style="width:50%">-->
+                <!--    <a href=""><button class="btn btn-outline-warning _btn_outline py-2 px-5">Login</button></a>-->
+                <!--    <a href=""><button class="btn btn-warning _btn py-2 px-5">Register</button></a>-->
+                <!--</div>-->
                 </div>
                 <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
                 <a href="javascript:void(0);" class="icon" onclick="mobile_toggle()">
@@ -116,7 +115,7 @@
                         </div>
                         <p>
                             <a href="{{url_for("tours")}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
-                            <a href="{{url_for("about")}}"<button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
+                            <a href="{{url_for("about")}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
                         </p>
                         </div>
                     </div>
@@ -140,7 +139,7 @@
                         </div>
                         <p>
                             <a href="{{url_for("tours")}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
-                            <a href="{{url_for("about")}}"<button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
+                            <a href="{{url_for("about")}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
                         </p>
                         </div>
                     </div>
@@ -165,7 +164,7 @@
                         </div>
                         <p>
                             <a href="{{url_for("tours")}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
-                            <a href="{{url_for("about")}}"<button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
+                            <a href="{{url_for("about")}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
                         </p>
                         </div>
                     </div>
@@ -189,7 +188,7 @@
                         </div>
                             <p>
                                 <a href="{{url_for("tours")}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
-                                <a href="{{url_for("about")}}"<button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
+                                <a href="{{url_for("about")}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
                             </p>
                         </div>
                     </div>
@@ -227,7 +226,7 @@
           </div>
         </div>       
         <div class="text-center mt-5">
-          <a href="{{ url_for("trip") }}"<button type="button" class="btn _btn mb-2 py-3 px-4">Go To Trip Gallery</button></a>
+          <a href="{{ url_for("trip") }}"><button type="button" class="btn _btn mb-2 py-3 px-4">Go To Trip Gallery</button></a>
         </div>
         </div>
       </section>
@@ -255,7 +254,7 @@
              We are a reliable tourism br&amp; that offers luxury experience
              at pocket friendly prices. We cater for groups, as well as individuals.
          </p>
-         <a href="{{ url_for("usersignup") }}"<button class="mt-1 btn _btn">Register Now</button></a>
+         <a href=""><button class="mt-1 btn _btn">Register Now</button></a>
         </div>
       </div>
     </section>
@@ -266,7 +265,7 @@
         <div class="col-md-12 text-center">
             <a href="/">
               <img src="{{ url_for('static', filename='images/logo/logo.png') }}"
-              class="object-cover mt-3 ms-3 footer-heading" width="17%"alt="Site logo" />&emsp; &emsp;
+              class="object-cover mt-3 ms-3 footer-heading" width="15%"alt="Site logo" />&emsp; &emsp;
             </a>
           <p class="menu mx-auto text-center">
             <a href="{{ url_for("tours") }}" class="text-secondary">Tours</a>&emsp;
@@ -281,10 +280,10 @@
               <input type="hidden" name="csrf_token" value="csrf_token()"/>
               <h5 style="color:#EA7317" class="text-center">Join Our Mailing List</h5>
               <p class="text-secondary text-center">Be the first to know about our updates &amp; promotions.</p>
-              <div class="d-flex flex-column flex-sm-row w-100 gap-2 mx-auto">
+              <div class="form-group w-100 gap-2 mx-auto w-50">
                 <label for="mailingList" class="visually-hidden">Email address</label>
-                <input id="mailingList" type="email" name="mailingList" class="form-control mx-auto" placeholder="Email address">
-                <button class="btn btn-warning _btn mailbtn" type="submit">Submit</button>
+                <input id="mailingList" type="email" name="mailingList" class="form-control mx-auto mb-3" placeholder="Email address">
+                <button class="btn btn-warning _btn mx-auto" type="submit">Submit</button>
               </div>
             </form>
           </div>
