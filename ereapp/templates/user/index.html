@@ -50,17 +50,17 @@
         </div>
           <!-- Hamburger Menu -->
           <div class="mobilenav d-md-none d-block">
-            <a href="{{url_for("home")}}">
+            <a href="{{url_for('home')}}">
                 <img src="{{ url_for('static', filename='images/logo/logo.png') }}"
                 class="object-cover" width="26%" alt="Sitelogo"/>
             </a>
             <div id="navlinks">
               <a class="nav-link active text-warning" href="{{ url_for('home')}}" target="_self" aria-current="page">Home</a>
                 <a class="nav-link dark" href="{{ url_for('about')}}">About</a>
-                <a class="nav-link dark" href="{{ url_for("contact") }}">Contact</a>
+                <a class="nav-link dark" href="{{ url_for('contact') }}">Contact</a>
                 <!--<a href="" target="_self" class="myacct">My Account</a>-->
-                <a class="nav-link dark" href="{{ url_for("trip") }}">Trip Gallery</a>
-                <a class="nav-link dark" href="{{ url_for("tours") }}">Upcoming Tours</a>
+                <a class="nav-link dark" href="{{ url_for('trip') }}">Trip Gallery</a>
+                <a class="nav-link dark" href="{{ url_for('tours') }}">Upcoming Tours</a>
                 <!--<div class="" style="width:50%">-->
                 <!--    <a href=""><button class="btn btn-outline-warning _btn_outline py-2 px-5">Login</button></a>-->
                 <!--    <a href=""><button class="btn btn-warning _btn py-2 px-5">Register</button></a>-->
@@ -103,20 +103,20 @@
                   <div class="text text-left text-lg-right p-4 px-xl-5 d-flex align-items-center hero-side">
                     <div class="desc w-100">
                       <h2 class="mb-4t text-light">We Are The <br> Experience</h2>
-                      <p class="h5 text-secondary fw-light">Call: +234 805 257 2599</p>
+                      <p class="h5 text-secondary fw-light">Call:  +234 803 764 2761</p>
                       <p class="h5 mb-4 text-secondary">Email Address: info@erekere.com</p>
                       <div class="row justify-content-end">
                         <div class="col-xl-8">
                           <p>
                             Erékéré is the number 1 Destination Management Company that provides local knowledge
-                            for events, activities &amp; tours in Nigeria &amp; the rest of Africa. We
+                            for events, activities &amp; tours in Nigeria &amp; the rest of world. We
                             curate group travel &amp; tour experiences that linger.
                           </p>
                         </div>
                       </div>
                       <p>
-                        <a href="{{url_for("tours")}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
-                        <a href="{{url_for("about")}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
+                        <a href="{{url_for('tours')}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
+                        <a href="{{url_for('about')}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
                       </p>
                     </div>
                   </div>
@@ -128,7 +128,7 @@
                   <div class="text text-left text-lg-right hero-side p-4 px-xl-5 d-flex align-items-center">
                     <div class="py-md-5">
                       <h2 class="mb-4 text-light">Happy <br> Tourism</h2>
-                      <p class="h5 text-secondary fw-light">Call: +234 805 257 2599</p>
+                      <p class="h5 text-secondary fw-light">Call:  +234 803 764 2761</p>
                       <p class="h5 mb-4 text-secondary">Email Address: info@erekere.com</p>
                       <div class="row justify-content-end">
                         <div class="col-xl-8">
@@ -139,8 +139,32 @@
                         </div>
                       </div>
                       <p>
-                        <a href="{{url_for("tours")}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
-                        <a href="{{url_for("about")}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
+                        <a href="{{url_for('tours')}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
+                        <a href="{{url_for('about')}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="work-wrap d-md-flex">
+                  <div class="img order-md-last hero" style="background-image: url(static//images/lagos.jpg)"></div>
+                  <div class="text text-left text-lg-right hero-side p-4 px-xl-5 d-flex align-items-center">
+                    <div class="py-md-5">
+                      <h2 class="mb-4 text-light">Unique <br> Travel Stories</h2>
+                      <p class="h5 text-secondary fw-light">Call:  +234 803 764 2761</p>
+                      <p class="h5 mb-4 text-secondary">Email Address: info@erekere.com</p>
+                      <div class="row justify-content-end">
+                        <div class="col-xl-8">
+                          <p>
+                            We provide local knowledge for events, activities and tours in Nigeria and the rest of world.
+                            We these stories with focus on delivering great travel experiences at reasonable prices. 
+                          </p>
+                        </div>
+                      </div>
+                      <p>
+                        <a href="{{url_for('tours')}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
+                        <a href="{{url_for('about')}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
                       </p>
                     </div>
                   </div>
@@ -152,20 +176,20 @@
                   <div class="text text-left text-lg-right hero-side p-4 px-xl-5 d-flex align-items-center">
                     <div class="py-md-5 text-light fw-light">
                       <h2 class="mb-4 text-light">We Go <br> Extra</h2>
-                      <p class="h5 text-secondary">Call: +234 805 257 2599</p>
+                      <p class="h5 text-secondary">Call:  +234 803 764 2761</p>
                       <p class="h5 mb-4 text-secondary">Email Address: info@erekere.com</p>
                       <div class="row justify-content-end">
                         <div class="col-xl-8">
                           <p>
                             We organise group tours, school excursions, corporate retreats, holiday packages
-                            &amp; also offer tour guide services within Africa, especially in Nigeria to educate
+                            &amp; also offer tour guide services within and outside Africa, to educate
                             people about the beauty within.
                           </p>
                         </div>
                       </div>
                       <p>
-                        <a href="{{url_for("tours")}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
-                        <a href="{{url_for("about")}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
+                        <a href="{{url_for('tours')}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
+                        <a href="{{url_for('about')}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
                       </p>
                     </div>
                   </div>
@@ -177,7 +201,7 @@
                   <div class="text text-left text-lg-right hero-side p-4 px-xl-5 d-flex align-items-center">
                     <div class="py-md-5 text-light fw-light">
                       <h2 class="mb-4 text-light">Happy <br> Connect</h2>
-                      <p class="h5 text-secondary">Call: +234 805 257 2599</p>
+                      <p class="h5 text-secondary">Call:  +234 803 764 2761</p>
                       <p class="h5 mb-4 text-secondary">Email Address: info@erekere.com</p>
                       <div class="row justify-content-end">
                         <div class="col-xl-8">
@@ -188,8 +212,8 @@
                         </div>
                       </div>
                       <p>
-                        <a href="{{url_for("tours")}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
-                        <a href="{{url_for("about")}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
+                        <a href="{{url_for('tours')}}"><button type="button" class="btn btn-outline-warning _btn_outline mb-2 py-3 px-4">Book A Tour Now</button></a>
+                        <a href="{{url_for('about')}}"><button type="button" class="btn _btn mb-2 py-3 px-4">About Us</button></a>
                       </p>
                     </div>
                   </div>
@@ -225,7 +249,7 @@
                 &amp; life-size head sculptures. 
               </p>
             </div>
-            <div class="bg-lilac shadow-sm mx-auto" style="width: 80%; background-image:url(static/images/bene1.jpg); background-size: cover; background-position:center; height: 300px; border-radius: 21px 21px 0 0;"></div>
+            <div class="bg-lilac shadow-sm mx-auto" style="width: 80%; background-image:url(static/images/quidah.jpg); background-size: cover; background-position:center; height: 300px; border-radius: 21px 21px 0 0;"></div>
           </div>
           <div class="bg-lilac me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
             <div class="my-3 p-3">
@@ -239,7 +263,7 @@
           </div>
         </div>       
         <div class="text-center mt-5">
-          <a href="{{ url_for("trip") }}"><button type="button" class="btn _btn mb-2 py-3 px-4">Go To Trip Gallery</button></a>
+          <a href="{{ url_for('trip') }}"><button type="button" class="btn _btn mb-2 py-3 px-4">Go To Trip Gallery</button></a>
         </div>
         </div>
       </div>
@@ -265,7 +289,7 @@
              We are a reliable tourism br&amp; that offers luxury experience
              at pocket friendly prices. We cater for groups, as well as individuals.
          </p>
-         <a href=""><button class="mt-1 btn _btn">Register Now</button></a>
+         <a href="/contact"><button class="mt-1 btn _btn">Contact Us</button>
         </div>
       </div>
     </section>
@@ -279,11 +303,11 @@
               class="object-cover mt-3 ms-3 footer-heading" width="15%"alt="Site logo" />&emsp; &emsp;
             </a>
           <p class="menu mx-auto text-center">
-            <a href="{{ url_for("tours") }}" class="text-secondary">Tours</a>&emsp;
-            <a href="{{ url_for("trip") }}" class="text-secondary">Eré Diaries</a>&emsp;
+            <a href="{{ url_for('tours') }}" class="text-secondary">Tours</a>&emsp;
+            <a href="{{ url_for('trip') }}" class="text-secondary">Eré Diaries</a>&emsp;
             <a href="/privacy-policy" class="text-secondary">Privacy Policy</a>&emsp;
             <a href="/terms-conditions" class="text-secondary">Terms</a>&emsp;
-            <a href="{{ url_for("about") }}" class="text-secondary">About</a>&emsp;
+            <a href="{{ url_for('about') }}" class="text-secondary">About</a>&emsp;
             
           </p>
           <div class="mx-auto mailing mb-3">
