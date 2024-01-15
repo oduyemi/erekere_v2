@@ -84,30 +84,6 @@ def adminhome():
             return redirect("/admin/adminlogin")
 
 
-@starter.route("/admin/pending", strict_slashes = False)
-def pendingpay():
-    if session.get('admin') != None:
-        mdeets=db.session.query(Payment).where(Payment.payment_status==1).all()
-    return render_template('admin/pending.html',mdeets=mdeets)
-
-
-@starter.route("/admin/approve/<int:id>", strict_slashes = False)
-def approve(id):
-    if session.get('admin') != None:
-       item=Payment.query.get_or_404(id)
-       deets = db.session.query(Payment).filter(Payment.payment_status==3).first() 
-       query1=f"UPDATE payment SET payment_status=1 WHERE payment_user=id"
-       db.session.execute(text(query1))
-       query2=f"UPDATE trip SET trip_payment_status=1 WHERE trip_user=id"
-       db.session.execute(text(query2))
-    try:
-        db.session.commit()
-        return redirect(url_for('adminhome'))
-        
-    except:
-        return redirect(url_for('adminhome'))
-
-
 @starter.route("/admin/email", strict_slashes = False)
 def email():
     if session.get('admin') != None:
@@ -138,13 +114,6 @@ def sorted():
     if session.get('admin') != None:
         mdeets=db.session.query(Contact).where(Contact.contact_status_id==3).all()
         return render_template('admin/sorted.html',mdeets=mdeets)
-
-
-@starter.route("/admin/club", strict_slashes = False)
-def club():
-    if session.get('admin') != None:
-        mdeets=db.session.query(User).all()
-        return render_template('admin/club.html',mdeets=mdeets)
 
 
 @starter.route("/admin/tours", methods=["GET","POST"], strict_slashes = False)

@@ -22,7 +22,35 @@
     }
     .formlink span{
         color:#10349A;
-        font-size:smaller
+        font-size:smaller;
+    }
+    input[type=text],
+    input[type=password],
+    input[type=email]{
+      width: 85%;
+      position: relative;
+      left: -0.1%;
+    }
+    .bttn{
+        position: relative !important;
+        right: -6px;
+        top: 3%;
+        width: 82%;
+        padding: 7px;
+        color: #0A122A;
+        background: #ffda29;
+        text-align: center;
+        font-size: 18px;
+        border-radius: 4px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        transition: .3s;
+    }
+    legend{
+      color:#420039 !important;
+      font-size: 28px;
+      font-weight: bolder;
     }
     </style>
 
@@ -48,6 +76,7 @@
 {% endif %}
 
 {% endwith %}
+<div class="mt-5"></div>
 <div class="txt_field form-group">
   {% if form.username.errors %}
     {{ form.username (class="is_invalid") }}
@@ -78,9 +107,9 @@
 
                     <!--<label for="chk" aria-hidden="true">Forget Password?</label><-->
                     <div class="txt_field form-group">
-                    {{ form.submit (class="_mainbtn mx-4") }}
-                    <div class="formlink">
-                        <span class="ms-5">Not an admin? <a href="{{url_for("home")}}">Click Here</a></span>
+                    {{ form.submit (class="_mainbtn mx-4 bttn") }}
+                    <div class="formlink ms-5 mt-3">
+                        <span class="ms-5">Not an admin? <a href="{{url_for('home')}}">Click Here</a></span>
                         </div>
                 </div>
                 
