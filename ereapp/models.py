@@ -1,98 +1,99 @@
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
-from ereapp import db
+from bson.objectid import ObjectId
 
 
+class UserModel:
+    @staticmethod
+    def create(fullname, phone, username, password, question=None, answer=None):
+        return {
+            "fullname": fullname,
+            "phone": phone,
+            "username": username,
+            "password": password,
+            "security": {
+                "question": question,
+                "answer": answer
+            } if question and answer else None,
+            "created_at": datetime.utcnow()
+        }
 
+class AdminModel:
+    @staticmethod
+    def create(fname, lname, username, password):
+        return {
+            "fname": fname,
+            "lname": lname,
+            "username": username,
+            "password": password,
+            "created_at": datetime.utcnow()
+        }
 
-class Admin(db.Model):
-    admin_id=db.Column(db.Integer, autoincrement=True,primary_key=True)
-    admin_fname=db.Column(db.String(100),nullable=True)
-    admin_lname=db.Column(db.String(100),nullable=True)
-    admin_username=db.Column(db.String(100),nullable=True, unique=True)
-    admin_password=db.Column(db.String(200),nullable=True)
-    admin_regdate = db.Column(db.DateTime(), default=datetime.utcnow)
+class ContactModel:
+    @staticmethod
+    def create(name, email, phone, gender, method, message):
+        return {
+            "name": name,
+            "email": email,
+            "phone": phone,
+            "gender": gender,
+            "method": method,
+            "message": message,
+            "status": "new",  # new, read, resolved
+            "handled_by": None,
+            "created_at": datetime.utcnow()
+        }
 
-class User(db.Model):
-    user_id=db.Column(db.Integer, autoincrement=True,primary_key=True)
-    user_fullname=db.Column(db.String(100),nullable=True)
-    user_phone=db.Column(db.String(100),nullable=True)
-    user_username=db.Column(db.String(100),nullable=True, unique=True)
-    user_password=db.Column(db.String(200),nullable=True)
-    user_question = db.Column(db.Integer, db.ForeignKey('question.question_id'))
-    user_secret = db.Column(db.String(255),nullable=True)
-    user_regdate = db.Column(db.DateTime(), default=datetime.utcnow)
-    #Relationship
-    userdeets = db.relationship("Question", backref="questdeets")
+class TourModel:
+    @staticmethod
+    def create(name, description, price, image, start_date, end_date):
+        return {
+            "name": name,
+            "description": description,
+            "price": float(price),
+            "image": image,
+            "start_date": start_date,
+            "end_date": end_date,
+            "created_at": datetime.utcnow()
+        }
 
+class TripModel:
+    @staticmethod
+    def create(user_id, tour):
+        return {
+            "user_id": ObjectId(user_id),
 
-class Question(db.Model):
-    question_id=db.Column(db.Integer, autoincrement=True,primary_key=True)
-    question_name=db.Column(db.String(255),nullable=True)
+            "tour": {
+                "id": tour["_id"],
+                "name": tour["name"],
+                "price": tour["price"],
+                "start_date": tour.get("start_date")
+            },
 
-    #Relationship
-    #questdeets = db.relationship("User", backpopulates="userdeets")
+            "payment": {
+                "amount": tour["price"],
+                "status": "pending",  # pending, paid, failed
+                "receipt": None,
+                "paid_at": None
+            },
 
+            "status": "booked",  # booked, confirmed, completed
+            "created_at": datetime.utcnow()
+        }
 
-class Contact_status(db.Model):
-    status_id=db.Column(db.Integer, autoincrement=True,primary_key=True)
-    statusname=db.Column(db.String(120),nullable=False)
+    @staticmethod
+    def mark_paid():
+        return {
+            "$set": {
+                "payment.status": "paid",
+                "payment.paid_at": datetime.utcnow(),
+                "status": "confirmed"
+            }
+        }
 
-class P_status(db.Model):
-    p_status_id = db.Column(db.Integer, autoincrement=True,primary_key=True)
-    p_status_status = db.Column(db.String(120),nullable=False)
-
-
-class Contact(db.Model):
-    contact_id=db.Column(db.Integer, autoincrement=True,primary_key=True) 
-    contact_name=db.Column(db.String(150),nullable=False)   
-    contact_email=db.Column(db.String(100),nullable=False)
-    contact_phone=db.Column(db.String(40),nullable=False)
-    contact_gender=db.Column(db.String(100),nullable=False)
-    contact_method=db.Column(db.String(100),nullable=False)
-    contact_content=db.Column(db.Text(),nullable=False)
-    contact_date = db.Column(db.DateTime(), default=datetime.utcnow)
-    contact_status_id=db.Column(db.Integer, db.ForeignKey('contact_status.status_id'))
-    contact_admin_id=db.Column(db.Text(),nullable=True)
-
-
-class Payment(db.Model):
-    payment_id = db.Column(db.Integer, autoincrement=True,primary_key=True)
-    payment_userfname = db.Column(db.String(200),nullable=True)   
-    payment_user = db.Column(db.Integer, db.ForeignKey('user.user_id'))
-    payment_amount = db.Column(db.Float(),nullable=True)
-    payment_trip = db.Column(db.Integer, db.ForeignKey('tour.tour_id'))
-    payment_date = db.Column(db.DateTime(), default=datetime.utcnow)
-    payment_status = db.Column(db.Integer, db.ForeignKey('p_status.p_status_id')) 
-
-    #Relationship
-    paydeets = db.relationship("P_status", backref="pdeets")  
-
-
-class Email(db.Model):
-    email_id = db.Column(db.Integer, autoincrement=True,primary_key=True)
-    email_email = db.Column(db.String(200),nullable=True)   
-
-
-class Trip(db.Model):
-    trip_id = db.Column(db.Integer, autoincrement=True,primary_key=True)
-    trip_tour = db.Column(db.Integer, db.ForeignKey('tour.tour_id'))
-    trip_user = db.Column(db.Integer, db.ForeignKey('user.user_id'))
-    trip_receipt = db.Column(db.String(120),nullable=True) 
-    trip_payment_status = db.Column(db.Integer, db.ForeignKey('p_status.p_status_id'))
-
-    #Relationship
-    tripdeets = db.relationship("Tour", backref="tourdeets")
-    tripuserdeets = db.relationship("User", backref="user_deets")
-    tripp_deets = db.relationship("P_status", backref="pee_deets")
-
-class Tour(db.Model):
-    tour_id = db.Column(db.Integer, autoincrement=True,primary_key=True)
-    tour_name = db.Column(db.String(200),nullable=False)
-    tour_desc = db.Column(db.Text(), nullable=True)
-    tour_price = db.Column(db.String(200),nullable=False)
-    tour_img = db.Column(db.String(200), nullable=False)
-    tour_startdate = db.Column(db.DateTime(), nullable=True)
-    tour_enddate = db.Column(db.DateTime(), nullable=True)
-
-
+class EmailModel:
+    @staticmethod
+    def create(email):
+        return {
+            "email": email,
+            "created_at": datetime.utcnow()
+        }
