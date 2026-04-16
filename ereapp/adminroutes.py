@@ -2,6 +2,7 @@ import os, random, string
 from datetime import datetime
 from flask import render_template, request, redirect, session, flash
 from bson.objectid import ObjectId
+from ereapp.form import LoginForm, SignUp
 from ereapp import starter
 from ereapp.services.admin_services import AdminService
 
@@ -14,12 +15,14 @@ def generate_name():
 # Auth
 @starter.route('/admin/signup', methods=["GET", "POST"])
 def adminsignup():
-    if request.method == "POST":
+    form = SignUp()
+
+    if request.method == "POST" and form.validate_on_submit():
         result = AdminService.create_admin(
-            request.form.get("fname"),
-            request.form.get("lname"),
-            request.form.get("username"),
-            request.form.get("password")
+            form.fullname.data,
+            "",  
+            form.username.data,
+            form.password.data
         )
 
         if "error" in result:
@@ -29,15 +32,16 @@ def adminsignup():
         flash("Account created!", "success")
         return redirect("/admin/login")
 
-    return render_template('admin/adminsignup.html')
+    return render_template('admin/adminsignup.html', form=form)
 
 
 @starter.route('/admin/login', methods=["GET", "POST"])
 def adminlogin():
-    if request.method == "POST":
+    form = LoginForm() 
+    if request.method == "POST" and form.validate_on_submit():
         result = AdminService.login_admin(
-            request.form.get("username"),
-            request.form.get("password")
+            form.username.data,
+            form.password.data
         )
 
         if "error" in result:
@@ -47,7 +51,7 @@ def adminlogin():
         session["admin"] = str(result["admin"]["_id"])
         return redirect("/admin")
 
-    return render_template('admin/adminlogin.html')
+    return render_template('admin/adminlogin.html', form=form)
 
 
 @starter.route('/admin/logout')
