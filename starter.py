@@ -1,4 +1,4 @@
-from ereapp import starter
+from ereapp import starter as app
 
 if not starter.config['MONGO_URI']:
     raise ValueError("MONGO_URI is not set")
