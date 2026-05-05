@@ -1,0 +1,16 @@
+venv/
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+.env
+.env.*
+dist/
+build/
+.next/
+.cache/
+uploads/
+static/uploads/
+ere/
