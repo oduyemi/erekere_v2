@@ -1,144 +1,218 @@
 {% extends "user/layout.html" %}
 {% block title %}<title>Tours Erékéré</title>{% endblock %}
+
 {% block moreStyle %}
-  <style>
-    .imagebox{
-        background-image:url(static/images/tour.jpg),
-        linear-gradient(65deg, #3066be 12%, #23f0c7 88%);
-    } 
-  </style>
-  {% endblock %}
-{% block hero %}
+<style>
+    .tours-page{
+        background: #fafaf8;
+        padding: 3.5rem 0 5rem;
+    }
 
+    .tours-head{
+        text-align: center;
+        margin-bottom: 3.2rem;
+    }
+
+    .tours-head h1{
+        font-size: clamp(2.6rem, 5vw, 4.8rem);
+        line-height: .95;
+        letter-spacing: -.04em;
+        font-weight: 800;
+        color: #001B2E;
+        margin-bottom: .8rem;
+    }
+
+    .tours-head p{
+        max-width: 700px;
+        margin: 0 auto;
+        color: #526070;
+        line-height: 1.95;
+        font-size: 1rem;
+    }
+
+    .tour-card{
+        background: #ffffff;
+        border: 1px solid rgba(15, 23, 42, .05);
+        border-radius: 22px;
+        overflow: hidden;
+        height: 100%;
+        transition: transform .28s ease, border-color .28s ease;
+    }
+
+    .tour-card:hover{
+        transform: translateY(-5px);
+        border-color: rgba(255, 218, 41, .45);
+    }
+
+    .tour-card img{
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .tour-card-body{
+        padding: 1.35rem 1.35rem 1.5rem;
+    }
+
+    .tour-title{
+        font-size: 1.28rem;
+        font-weight: 700;
+        color: #001B2E;
+        line-height: 1.2;
+        margin-bottom: .65rem;
+    }
+
+    .tour-description{
+        color: #526070;
+        font-size: .96rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        min-height: 92px;
+    }
+
+    .tour-date{
+        font-size: .88rem;
+        font-weight: 600;
+        color: #7c8a9a;
+        margin-bottom: 1rem;
+        letter-spacing: .03em;
+    }
+
+    .tour-meta{
+        background: #f7f7f4;
+        border: 1px solid rgba(15, 23, 42, .04);
+        border-radius: 16px;
+        padding: .9rem 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .tour-meta-row{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: .4rem;
+        font-size: .94rem;
+    }
+
+    .tour-meta-row:last-child{
+        margin-bottom: 0;
+    }
+
+    .tour-meta-label{
+        color: #7c8a9a;
+        font-weight: 500;
+    }
+
+    .tour-meta-value{
+        color: #001B2E;
+        font-weight: 600;
+        text-align: right;
+    }
+
+    .tour-btn{
+        width: 100%;
+        padding: .8rem 1rem;
+        border-radius: 14px;
+        font-weight: 600;
+    }
+
+    .tour-empty{
+        text-align: center;
+        background: #ffffff;
+        border: 1px solid rgba(15, 23, 42, .05);
+        border-radius: 22px;
+        padding: 3rem 2rem;
+        color: #526070;
+    }
+
+    @media (max-width: 767px){
+        .tours-page{
+            padding: 2rem 0 3rem;
+        }
+
+        .tour-card img{
+            height: 220px;
+        }
+
+        .tour-description{
+            min-height: auto;
+        }
+    }
+</style>
 {% endblock %}
-{% block contentBody %}    
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          {% if tour%}
-          {% for row in tour %}
-            <div class="col">
-              <div class="card shadow-sm">
 
-                <img class="card-img-top"
-                    src="{{ url_for('static', filename='uploads/' + row.image) }}">
+{% block hero %}{% endblock %}
 
-                <div class="card-body">
+{% block contentBody %}
+<section class="tours-page">
+    <div class="container">
+        <div class="tours-head">
+            <h1>Upcoming Tours</h1>
+            <p>
+                Discover curated journeys designed for culture, adventure,
+                connection, and unforgettable stories.
+            </p>
+        </div>
 
-                  <form method="post" action="/book">
+        <div class="row g-4">
+            {% if tour %}
+                {% for row in tour %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="tour-card">
 
-                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="tour_id" value="{{ row._id }}">
+                        <img
+                            src="{{ url_for('static', filename='uploads/' + row.image) }}"
+                            alt="{{ row.name }}"
+                        >
 
-                    <legend>{{ row.name }}</legend>
+                        <div class="tour-card-body">
+                            <form method="post" action="/book">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="tour_id" value="{{ row._id }}">
 
-                    <p class="card-text">{{ row.description }}</p>
+                                <h3 class="tour-title">{{ row.name }}</h3>
 
-                    {% if row.start_date %}
-                    <p class="card-text">
-                      {{ row.start_date.strftime("%Y-%m-%d") }}
-                    </p>
-                    {% endif %}
+                                <p class="tour-description">
+                                    {{ row.description }}
+                                </p>
 
-                    <div>
-                      <label>Trip Name</label>
-                      <input type="text" value="{{ row.name }}" readonly>
+                                {% if row.start_date %}
+                                <div class="tour-date">
+                                    {{ row.start_date.strftime("%d %b %Y") }}
+                                </div>
+                                {% endif %}
+
+                                <div class="tour-meta">
+                                    <div class="tour-meta-row">
+                                        <span class="tour-meta-label">Trip</span>
+                                        <span class="tour-meta-value">{{ row.name }}</span>
+                                    </div>
+
+                                    <div class="tour-meta-row">
+                                        <span class="tour-meta-label">Price</span>
+                                        <span class="tour-meta-value">₦{{ row.price }}</span>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn _btn tour-btn">
+                                    Book This Tour
+                                </button>
+                            </form>
+                        </div>
                     </div>
-
-                    <div>
-                      <label>Price</label>
-                      <input type="text" value="₦{{ row.price }}" readonly>
-                    </div>
-
-                    <div class="btn-group">
-                      <button type="submit" class="btn btn-warning">
-                        Book Trip
-                      </button>
-                    </div>
-
-                  </form>
-
                 </div>
-              </div>
-            </div>
-            {% endfor %}
-          {% else %}
-        <div class="col-md-10 mx-auto text-center">
-            <p>There are no upcoming tours on schedule. Please check back later.</p>
+                {% endfor %}
+            {% else %}
+                <div class="col-12">
+                    <div class="tour-empty">
+                        There are no upcoming tours at the moment. Please check back soon.
+                    </div>
+                </div>
+            {% endif %}
         </div>
-        {%endif%}
-        </div>
-      </div>
     </div>
+</section>
 {% endblock %}
+
 {% block extra %}{% endblock %}
-
-
-
-
- 
-
-
-
-            <!-- FOOTER -->
-            <section class="mt-5">
-              <div class="row mt-5 pre_footer_main">
-                  <div class="my-3 mx-auto col-12">
-                      <form>
-                          <input type="hidden" name="csrf_token" value="csrf_token()"/>
-                          <h1 class="ms-5 ps-5">Join Our Mailing List</h1><span>&emsp; &emsp;
-                              <input type="email" class="ps-5" name="email_address"
-                              placeholder="Enter Your Email Address">
-                              <button id="mailing" class="btn btn-warning me-5 px-3">Go</button>
-                          </form></span>
-                  </div>
-                  <div class="f_col col-4">
-                      <h2>Navigation</h2>
-                      <ul class="px-5 mx-auto">
-                          <li><a href="/trip">Trip Gallery</a></li>
-                          <li><a href="/tours">Upcoming Tours</a></li>
-                          <li><a href="/media">Media Center</a></li>
-                      </ul>
-                  </div>
-                  <div class="f_col col-4">
-                      <h2>Quick Links</h2>
-                      <ul class="px-5 mx-auto">
-                          <li><a href="/about">About Us</a></li>
-                          <li><a href="/contact">Contact Us</a></li>
-                          <li><a href="/tours">Book A Tour</a></li>
-                      </ul>
-                  </div>
-                  <div class="f_col col-4">
-                      <h2>Erékéré Africa</h2>
-                      <p class="px-5 mx-auto">
-                          Ogundare Awise Street,<br>Sholuyi, Gbagada
-                          <br>+234 805 257 2599
-                      </p>
-                      <img src="static/images/icons/fb.png" width="5%" class="icons fb">
-                      <img src="static/images/icons/ig.png" width="5%" class="icons ig">
-                      <img src="static/images/icons/twi.png" width="5%" class="icons twi">
-                  </div>
-                  
-              </div>
-            </section>
-      
-      <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-          <span class="text-muted">
-            <a href="/privacy-policy">Privacy Policy</a> &emsp; <a href="/terms-conditions">Terms of Use</a>
-            Erékéré Africa&copy; &emsp;&#45;&emsp;All Rights Reserved. 
-            <a href="www.yemi.dev">Designed By Yemi</a>
-          </span>
-        </div>
-      </footer> 
-      
-      </div>
-      
-     
-      
-      </div>
-      <script src="{{url_for('static', filename='js/jquery-3.6.1.min.js') }}"  type="text/javascript"></script>
-      <script type="text/javascript" language="javascript" src="{{url_for('static', filename='js/script.js') }}"></script>
-      <script src="{{url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
-      </body>
-      </html>

@@ -1,88 +1,240 @@
 {% extends "user/layout.html" %}
 {% block title %}<title>About Erekere</title>{% endblock %}
+
 {% block moreStyle %}
-    <style>
-        .imagebox{
-            background-image:url(static/images/aboutus.jpg),
-            linear-gradient(65deg, #3066be 12%, #23f0c7 88%);
-            background-position-y: 34%;
+<style>
+    .about-hero-image{
+        background-image:
+            linear-gradient(to top, rgba(0,0,0,.18), rgba(0,0,0,.03)),
+            url(static/images/aboutus.jpg);
+        background-size: cover;
+        background-position: center 34%;
+        min-height: 560px;
+    }
+
+    .about-hero{
+        min-height: 560px;
+        border-radius: 0 0 34px 34px;
+        overflow: hidden;
+        margin-bottom: 4rem;
+        box-shadow:
+            0 12px 24px rgba(15,23,42,.01),
+            0 30px 60px rgba(15,23,42,.05);
+    }
+
+    .about-copy{
+        background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 4rem 4.5rem;
+    }
+
+    .about-copy .crumbs{
+        font-size: .82rem;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        font-weight: 600;
+        color: #64748b;
+    }
+
+    .about-copy h1{
+        font-size: clamp(2.8rem, 5vw, 4.8rem);
+        line-height: .95;
+        letter-spacing: -.04em;
+        font-weight: 800;
+        margin: 1rem 0 1.2rem;
+        color: #001B2E;
+    }
+
+    .about-copy p{
+        max-width: 520px;
+        font-size: 1.04rem;
+        line-height: 1.9;
+        color: #475569;
+        margin: 0;
+    }
+
+    .about-section-title{
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        font-weight: 800;
+        letter-spacing: -.03em;
+        color: #001B2E;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .about-story{
+        background: #ffffff;
+        border-radius: 28px;
+        padding: 2.5rem;
+        box-shadow:
+            0 10px 22px rgba(15,23,42,.01),
+            0 24px 50px rgba(15,23,42,.05);
+    }
+
+    .about-story-image{
+        min-height: 420px;
+        border-radius: 24px;
+        background-image: url(static/images/c.jpg);
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 16px 34px rgba(0,0,0,.05);
+    }
+
+    .about-story h2{
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        font-weight: 800;
+        letter-spacing: -.03em;
+        color: #001B2E;
+        margin-bottom: 1rem;
+    }
+
+    .about-story p{
+        line-height: 1.95;
+        color: #475569;
+        margin-bottom: 0;
+    }
+
+    .mission-vision{
+        border-radius: 28px;
+        padding: 1rem;
+        background: #BC8DA7;
+        box-shadow:
+            0 10px 22px rgba(15,23,42,.04),
+            0 24px 50px rgba(15,23,42,.06);
+    }
+
+    .mission-card{
+        background: rgba(255,255,255,.35);
+        border: 1px solid rgba(255,255,255,.4);
+        border-radius: 24px;
+        padding: 2rem;
+        height: 100%;
+        backdrop-filter: blur(6px);
+    }
+
+    .mission-card h2{
+        font-size: 2rem;
+        font-weight: 800;
+        color: #001B2E;
+        margin-bottom: 1rem;
+    }
+
+    .mission-card ul{
+        margin: 0;
+        padding-left: 1.1rem;
+    }
+
+    .mission-card li{
+        line-height: 1.9;
+        color: #334155;
+        margin-bottom: .75rem;
+    }
+
+    @media (max-width: 767px){
+        .about-hero{
+            min-height: auto;
+            margin-bottom: 2rem;
+            border-radius: 0 0 22px 22px;
         }
-         @media (max-width: 767px){
-            #body_box2{
-                position: relative !important;
-                left:0 !important;
-            }
+
+        .about-copy{
+            padding: 2rem 1.4rem;
         }
-    </style>
-   
+
+        .about-hero-image{
+            min-height: 280px;
+        }
+
+        .about-story{
+            padding: 1.25rem;
+        }
+
+        .about-story-image{
+            min-height: 240px;
+            margin-bottom: 1.25rem;
+        }
+
+        .mission-card{
+            padding: 1.4rem;
+        }
+    }
+</style>
 {% endblock %}
- {% block hero %}
-    <div class="row hero_box mx-auto overflow-hidden">
-        <div class="col-md-6 textbox">
-            <a href="/">home &sol;</a>
-                <a href="{{ url_for("about") }}">About-us</a>
-            <h1 class="text-dark-blue">About Us</h1>
+
+{% block hero %}
+<section class="container-fluid px-0">
+    <div class="row about-hero mx-auto">
+        <div class="col-md-6 about-copy">
+            <div class="crumbs">
+                <a href="/" class="text-decoration-none text-reset">Home</a> /
+                <a href="{{ url_for('about') }}" class="text-decoration-none text-reset">About</a>
+            </div>
+
+            <h1>About Us</h1>
+
             <p>
-                We provide premium tourism services, teaching
-                about the various benefits of traveling/ through experience rather than reading from a book.
+                We create premium travel experiences that connect people to places,
+                stories, and culture — transforming tourism into something memorable,
+                personal, and lasting.
             </p>
         </div>
-        <div class="col-md-6 imagebox"></div>
+
+        <div class="col-md-6 about-hero-image"></div>
     </div>
- {% endblock %}
- {% block contentBody %}
- <section class="mb-5">
-    <div class="row mb-3">
-        <div class="col-md-10 my-3 mx-auto">
-          <h1 class="animate__animated animate__bounce text-center text-dark-blue">The Eré Diaries</h1>
-        </div>
-    </div>
-</section>
-<section class="my-5 mx-auto">
-    <div class="row d-md-flex align-items-center justify-content-center body_box">
-        <div class="col-md-4 mx-auto" id="body_box2"></div>  
-        <div class="col-md-7 body_box1 mb-5 mx-auto">
-            <h2 class="mb-3 mt-5 fw-bold mx-auto w-75">What&apos;s Erekere About&quest;</h2>
-            <p class="w-75 mx-auto">
-                Erekere is a Nigerian tour operating company that promotes tourism and connects people.
-                We organise group tours, school excursions, corporate retreats, holiday packages and also offer
-                tour guide services, to educate people about the beauty within.
-                We organise affordable tours to encourage Nigerians and even foreigners to explore our rich and
-                diverse cultural heritage as well as our enthralling and beautiful landscapes.
-            </p>
-        </div>
-    </div>
-</section>
-{% endblock %}
-{% block extra %}
-<section class="my-5 ">
-    <div class="row d-flex justify-content-center align-items-center bg-lilac">
-        <div class="col-md-5 my-5">
-            <div style="margin:10px">
-                <h2 class="ps-4 text-dark-blue mx-auto fw-bold">Our Mission</h2>
-                <p>
-                    <ul>
-                        <li class="d-inline">To be a reliable tourism brand that offers luxury experience at pocket friendly prices.</li>
-                        <li class="d-inline">To create awareness to Nigerians and Foreigners alike, about the the beauty and
-                            richness of the Nigerian Culture and the need to develop and improve upon what
-                            we already have.</li>
-                    </ul>
-                </p>
-            </div>
-        </div>
-        <div class="col-md-5 my-5">
-            <div style="margin:10px">
-                <h2 class="ps-4 text-dark-blue mx-auto fw-bold">Our Vision</h2>
-                <p>
-                    <ul>
-                        <li class="d-inline">To curate experiences that linger for either groups and individuals</li>
-                        <li class="d-inline">To help Nigerians understand and appreciate what this country has to offer by
-                            improving domestic tourism and Increasing the level of Cultural enlightenment.</li>
-                    </ul>
-                </p>
-            </div>
-        </div>
-    </div> 
 </section>
 {% endblock %}
 
+{% block contentBody %}
+<section class="container mb-5">
+    <h2 class="about-section-title">The Eré Diaries</h2>
+
+    <div class="about-story">
+        <div class="row align-items-center g-4">
+            <div class="col-md-5">
+                <div class="about-story-image"></div>
+            </div>
+
+            <div class="col-md-7">
+                <h2>What’s Erekere About?</h2>
+
+                <p>
+                    Erekere is a Nigerian tour operating company built to promote tourism,
+                    deepen cultural appreciation, and connect people through unforgettable experiences.
+                    We organise group tours, school excursions, corporate retreats, holiday packages,
+                    and guided experiences that reveal the beauty, diversity, and richness of Nigeria.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra %}
+<section class="container my-5">
+    <div class="mission-vision">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="mission-card">
+                    <h2>Our Mission</h2>
+                    <ul>
+                        <li>To be a trusted tourism brand delivering premium experiences at accessible prices.</li>
+                        <li>To create greater awareness of the beauty, culture, and richness of Nigeria.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="mission-card">
+                    <h2>Our Vision</h2>
+                    <ul>
+                        <li>To curate travel experiences that linger for both individuals and groups.</li>
+                        <li>To inspire deeper appreciation for Nigeria through stronger domestic tourism and cultural enlightenment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
